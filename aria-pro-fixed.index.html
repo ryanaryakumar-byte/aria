@@ -1,0 +1,1398 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Aria Pro — Ultimate AI | Class 8</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"/>
+<meta name="theme-color" content="#7c6fff"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+<meta name="apple-mobile-web-app-title" content="Aria Pro"/>
+<link rel="manifest" href="data:application/json,{%22name%22:%22Aria%20Pro%22,%22short_name%22:%22Aria%22,%22start_url%22:%22.%22,%22display%22:%22standalone%22,%22background_color%22:%22%2307070f%22,%22theme_color%22:%22%237c6fff%22,%22icons%22:[{%22src%22:%22data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%20100%20100%27%3E%3Crect%20width%3D%27100%27%20height%3D%27100%27%20rx%3D%2722%27%20fill%3D%27%237c6fff%27%2F%3E%3Ctext%20y%3D%27.9em%27%20font-size%3D%2780%27%20text-anchor%3D%27middle%27%20x%3D%2750%27%3EA%3C%2Ftext%3E%3C%2Fsvg%3E%22,%22sizes%22:%22any%22,%22type%22:%22image/svg+xml%22}]}"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/9.1.6/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+[data-theme="dark"]{
+  --bg:#07070f;--s1:#0e0e1c;--s2:#151526;--s3:#1c1c32;
+  --border:rgba(255,255,255,0.07);--border2:rgba(255,255,255,0.12);
+  --text:#eeeef8;--muted:#7878a0;--muted2:#44445a;
+  --card-bg:#0e0e1c;--input-bg:#07070f;
+  --shadow:0 8px 32px rgba(0,0,0,0.5);
+}
+[data-theme="light"]{
+  --bg:#f0f0ff;--s1:#ffffff;--s2:#f5f5ff;--s3:#ebebff;
+  --border:rgba(0,0,0,0.08);--border2:rgba(0,0,0,0.13);
+  --text:#111128;--muted:#6666aa;--muted2:#aaaacc;
+  --card-bg:#ffffff;--input-bg:#f0f0ff;
+  --shadow:0 8px 32px rgba(108,99,255,0.1);
+}
+:root{
+  --accent:#7c6fff;--accent2:#b0a4ff;--accent3:#ff6b9d;
+  --green:#00e5a0;--yellow:#ffc857;--blue:#4ecdc4;--red:#ff6b6b;
+  --user:#5b4ef5;--bot-dark:#151526;--bot-light:#fff;
+  --font:'Plus Jakarta Sans',sans-serif;--mono:'JetBrains Mono',monospace;
+  --r:14px;--r2:20px;
+}
+
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:100vh;overflow-x:hidden;transition:background 0.3s,color 0.3s}
+
+/* BG */
+.bg-mesh{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+.orb{position:absolute;border-radius:50%;filter:blur(90px);animation:drift 15s ease-in-out infinite}
+[data-theme="dark"] .orb{opacity:0.13}
+[data-theme="light"] .orb{opacity:0.07}
+.o1{width:500px;height:500px;background:#6c63ff;top:-150px;left:-100px;animation-delay:0s}
+.o2{width:350px;height:350px;background:#ff6b9d;bottom:-100px;right:-80px;animation-delay:5s}
+.o3{width:280px;height:280px;background:#4ecdc4;top:40%;left:40%;animation-delay:10s}
+@keyframes drift{0%,100%{transform:translate(0,0)}50%{transform:translate(40px,25px)}}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:300;backdrop-filter:blur(24px);background:rgba(7,7,15,0.88);border-bottom:1px solid var(--border);padding:0 1.25rem;height:54px;display:flex;align-items:center;gap:10px}
+[data-theme="light"] nav{background:rgba(240,240,255,0.88)}
+.logo{display:flex;align-items:center;gap:9px;font-weight:800;font-size:1.05rem;letter-spacing:-0.02em;margin-right:auto}
+.logo-mark{width:30px;height:30px;background:linear-gradient(135deg,var(--accent),var(--accent3));border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:12px;font-weight:700;color:#fff;flex-shrink:0}
+.nav-btn{width:32px;height:32px;border-radius:8px;background:transparent;border:1px solid var(--border);color:var(--muted);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.15s;font-size:14px;flex-shrink:0}
+.nav-btn:hover{background:var(--s2);color:var(--text)}
+.pill{font-size:10px;padding:3px 9px;border-radius:20px;border:1px solid var(--border2);color:var(--muted);font-family:var(--mono);flex-shrink:0}
+.pill.live{border-color:rgba(0,229,160,0.35);color:var(--green);display:flex;align-items:center;gap:4px}
+.ldot{width:5px;height:5px;border-radius:50%;background:var(--green);animation:ldot 1.5s infinite}
+@keyframes ldot{0%,100%{opacity:1}50%{opacity:0.2}}
+
+/* HERO */
+.hero{position:relative;z-index:1;text-align:center;padding:2.5rem 1rem 1.5rem;max-width:580px;margin:0 auto}
+.badge{display:inline-flex;align-items:center;gap:6px;font-size:10.5px;font-family:var(--mono);color:var(--accent2);background:rgba(124,111,255,0.1);border:1px solid rgba(124,111,255,0.22);padding:3px 11px;border-radius:20px;margin-bottom:1rem;letter-spacing:0.06em;text-transform:uppercase}
+h1{font-size:clamp(1.8rem,5vw,3rem);font-weight:800;line-height:1.08;letter-spacing:-0.03em;margin-bottom:0.6rem}
+h1 em{font-style:normal;background:linear-gradient(90deg,var(--accent),var(--accent3));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-sub{font-size:0.88rem;color:var(--muted);line-height:1.7;max-width:380px;margin:0 auto 1.2rem}
+.feat-row{display:flex;flex-wrap:wrap;justify-content:center;gap:5px}
+.ftag{font-size:10.5px;padding:3px 9px;border-radius:20px;background:var(--s2);border:1px solid var(--border2);color:var(--muted)}
+
+/* TABS */
+.tabs-wrap{position:relative;z-index:2;max-width:760px;margin:0 auto;padding:0 1rem 0.75rem}
+.tabs{display:flex;gap:4px;background:var(--s1);border:1px solid var(--border);border-radius:12px;padding:4px;overflow-x:auto;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tab{flex-shrink:0;padding:6px 14px;border-radius:8px;border:none;background:transparent;color:var(--muted);font-size:12px;font-family:var(--font);font-weight:500;cursor:pointer;transition:all 0.2s;white-space:nowrap}
+.tab:hover{color:var(--text)}
+.tab.active{background:linear-gradient(135deg,var(--accent),#8b5cf6);color:#fff;font-weight:600;box-shadow:0 2px 10px rgba(124,111,255,0.3)}
+
+/* MAIN */
+.main{position:relative;z-index:1;max-width:760px;margin:0 auto;padding:0 1rem 2rem;display:flex;flex-direction:column;gap:10px}
+
+/* PANELS */
+.panel{display:none}
+.panel.active{display:flex;flex-direction:column;gap:10px}
+
+/* CHAT CARD */
+.card{background:var(--card-bg);border:1px solid var(--border2);border-radius:var(--r2);overflow:hidden;box-shadow:var(--shadow)}
+.topbar{background:var(--s2);border-bottom:1px solid var(--border);padding:11px 14px;display:flex;align-items:center;gap:9px}
+.av-wrap{position:relative;flex-shrink:0}
+.av{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent3));display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:12px;font-weight:700;color:#fff}
+.av-dot{position:absolute;bottom:1px;right:1px;width:8px;height:8px;border-radius:50%;background:var(--green);border:2px solid var(--s2)}
+.tb-info{flex:1;min-width:0}
+.tb-name{font-weight:700;font-size:13.5px}
+.tb-mode{font-size:10.5px;color:var(--muted);font-family:var(--mono);margin-top:1px}
+.tb-acts{display:flex;gap:5px;flex-shrink:0}
+.tact{width:28px;height:28px;border-radius:7px;background:transparent;border:1px solid var(--border);color:var(--muted);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:12px;transition:all 0.15s}
+.tact:hover{background:var(--s3);color:var(--text)}
+.tact.on{background:rgba(124,111,255,0.15);border-color:var(--accent);color:var(--accent2)}
+
+/* MESSAGES */
+.msgs{height:380px;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:9px;scroll-behavior:smooth}
+.msgs::-webkit-scrollbar{width:3px}
+.msgs::-webkit-scrollbar-thumb{background:var(--border2);border-radius:3px}
+.mrow{display:flex;align-items:flex-end;gap:6px;animation:min 0.2s ease}
+@keyframes min{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
+.mrow.u{flex-direction:row-reverse}
+.mav{width:24px;height:24px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;font-family:var(--mono)}
+.mav.b{background:rgba(124,111,255,0.12);color:var(--accent2);border:1px solid rgba(124,111,255,0.18)}
+.mav.u{background:rgba(91,78,245,0.18);color:var(--accent2);border:1px solid rgba(91,78,245,0.22)}
+.bwrap{display:flex;flex-direction:column;max-width:80%}
+.mrow.u .bwrap{align-items:flex-end}
+.bub{padding:9px 13px;border-radius:15px;font-size:13.5px;line-height:1.65;word-break:break-word;position:relative}
+.bub.b{background:var(--s2);color:var(--text);border:1px solid var(--border);border-bottom-left-radius:3px}
+[data-theme="light"] .bub.b{background:#fff;border-color:rgba(0,0,0,0.08)}
+.bub.u{background:var(--user);color:#fff;border-bottom-right-radius:3px}
+.ts{font-size:9.5px;color:var(--muted2);text-align:center;margin:2px 0}
+
+/* STREAMING CURSOR */
+.cursor{display:inline-block;width:2px;height:14px;background:var(--accent);margin-left:2px;vertical-align:middle;animation:cur 0.6s infinite}
+@keyframes cur{0%,100%{opacity:1}50%{opacity:0}}
+
+/* EMOJI REACTIONS */
+.reactions{display:flex;gap:4px;margin-top:5px;flex-wrap:wrap}
+.react-btn{font-size:14px;padding:2px 6px;border-radius:20px;border:1px solid var(--border);background:transparent;cursor:pointer;transition:all 0.15s;line-height:1}
+.react-btn:hover,.react-btn.picked{background:var(--s3);border-color:var(--border2);transform:scale(1.1)}
+.react-count{font-size:10px;color:var(--muted);font-family:var(--mono);vertical-align:middle}
+
+/* SEARCH BADGE */
+.sbadge{display:inline-flex;align-items:center;gap:4px;font-size:9.5px;font-family:var(--mono);color:var(--blue);background:rgba(78,205,196,0.1);border:1px solid rgba(78,205,196,0.2);padding:2px 7px;border-radius:8px;margin-bottom:4px}
+
+/* CHIPS */
+.chips{display:flex;flex-wrap:wrap;gap:5px;padding:0 14px 10px}
+.chip{font-size:11px;padding:4px 11px;border-radius:20px;border:1px solid var(--border2);background:transparent;color:var(--muted);cursor:pointer;font-family:var(--font);transition:all 0.15s}
+.chip:hover{border-color:var(--accent);color:var(--accent2);background:rgba(124,111,255,0.08)}
+
+/* INPUT */
+.input-area{border-top:1px solid var(--border);padding:10px 12px;background:var(--s2);display:flex;flex-direction:column;gap:8px}
+.input-row{display:flex;align-items:center;gap:7px}
+.input-box{flex:1;display:flex;align-items:center;gap:6px;background:var(--input-bg);border:1.5px solid var(--border2);border-radius:40px;padding:7px 12px;transition:border 0.2s}
+.input-box:focus-within{border-color:var(--accent);box-shadow:0 0 0 3px rgba(124,111,255,0.1)}
+#msgInput{flex:1;background:transparent;border:none;outline:none;font-size:13px;font-family:var(--font);color:var(--text)}
+#msgInput::placeholder{color:var(--muted2)}
+.img-label{cursor:pointer;font-size:15px;color:var(--muted);transition:color 0.15s;display:flex;align-items:center}
+.img-label:hover{color:var(--accent2)}
+#imgInput{display:none}
+.mic-btn{font-size:15px;background:none;border:none;cursor:pointer;color:var(--muted);transition:all 0.15s;display:flex;padding:0}
+.mic-btn:hover{color:var(--accent2)}
+.mic-btn.rec{color:var(--accent3);animation:rec 1s infinite}
+@keyframes rec{0%,100%{transform:scale(1)}50%{transform:scale(1.2)}}
+.send-btn{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--accent),#8b5cf6);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 3px 12px rgba(124,111,255,0.35);transition:opacity 0.15s,transform 0.1s}
+.send-btn:hover{opacity:0.88}
+.send-btn:active{transform:scale(0.92)}
+.send-btn svg{width:15px;height:15px;fill:#fff}
+
+/* IMG PREVIEW */
+.img-preview-wrap{position:relative;width:fit-content}
+.img-preview{max-height:80px;border-radius:8px;border:1px solid var(--border2)}
+.img-remove{position:absolute;top:-5px;right:-5px;width:16px;height:16px;border-radius:50%;background:var(--red);border:none;color:#fff;font-size:9px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-weight:700}
+
+/* TOOLBAR ROW */
+.toolbar{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.tbtn{font-size:10.5px;padding:3px 9px;border-radius:20px;border:1px solid var(--border);background:transparent;color:var(--muted);cursor:pointer;font-family:var(--font);transition:all 0.15s;display:flex;align-items:center;gap:3px;white-space:nowrap}
+.tbtn:hover,.tbtn.on{border-color:var(--accent);color:var(--accent2);background:rgba(124,111,255,0.08)}
+.tspacer{flex:1}
+.lang-sel{font-size:10.5px;padding:3px 7px;border-radius:20px;border:1px solid var(--border);background:var(--s1);color:var(--muted);cursor:pointer;font-family:var(--mono);outline:none;transition:all 0.15s}
+.lang-sel:hover{border-color:var(--border2)}
+
+/* GOAL TRACKER */
+.goal-item{background:var(--s2);border:1px solid var(--border);border-radius:var(--r);padding:10px 12px;transition:border-color 0.2s}
+.goal-item:hover{border-color:var(--border2)}
+.goal-header{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+.goal-icon{font-size:16px}
+.goal-name{font-size:13px;font-weight:600;flex:1}
+.goal-del{background:none;border:none;color:var(--muted2);cursor:pointer;font-size:12px;transition:color 0.15s}
+.goal-del:hover{color:var(--red)}
+.goal-progress{height:6px;background:var(--s3);border-radius:3px;overflow:hidden;margin-bottom:5px}
+.goal-bar{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent3));border-radius:3px;transition:width 0.4s ease}
+.goal-footer{display:flex;align-items:center;justify-content:space-between;font-size:10.5px;color:var(--muted);font-family:var(--mono)}
+.goal-btns{display:flex;gap:4px}
+.gprog-btn{padding:2px 7px;border-radius:6px;border:1px solid var(--border2);background:transparent;color:var(--muted);cursor:pointer;font-size:10px;font-family:var(--font);transition:all 0.15s}
+.gprog-btn:hover{border-color:var(--accent);color:var(--accent2)}
+
+/* MEMORY ITEMS */
+.mem-item{background:var(--s2);border:1px solid var(--border);border-radius:10px;padding:8px 11px;display:flex;gap:8px;align-items:flex-start}
+.mem-tag{font-size:9.5px;font-family:var(--mono);padding:2px 7px;border-radius:6px;flex-shrink:0;margin-top:1px}
+.mem-tag.fact{background:rgba(0,229,160,0.1);color:var(--green);border:1px solid rgba(0,229,160,0.2)}
+.mem-tag.pref{background:rgba(124,111,255,0.1);color:var(--accent2);border:1px solid rgba(124,111,255,0.2)}
+.mem-tag.struggle{background:rgba(255,107,107,0.1);color:var(--red);border:1px solid rgba(255,107,107,0.2)}
+.mem-tag.achieve{background:rgba(255,200,87,0.1);color:var(--yellow);border:1px solid rgba(255,200,87,0.2)}
+.mem-text{font-size:12.5px;line-height:1.55;flex:1}
+.mem-time{font-size:9.5px;color:var(--muted2);font-family:var(--mono);flex-shrink:0}
+
+/* INSTALL GUIDE */
+.install-step{display:flex;align-items:flex-start;gap:10px;padding:8px 0;border-bottom:1px solid var(--border);font-size:13px;line-height:1.5}
+.install-step:last-of-type{border-bottom:none}
+.step-num{width:22px;height:22px;border-radius:50%;background:linear-gradient(135deg,var(--accent),#8b5cf6);color:#fff;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;font-family:var(--mono)}
+.itab{transition:all 0.15s!important}
+.active-itab{border-color:var(--accent)!important;background:rgba(124,111,255,0.15)!important;color:var(--accent2)!important}
+
+/* MARKDOWN */
+.bub.b h1,.bub.b h2,.bub.b h3{font-family:var(--font);font-weight:700;margin:10px 0 4px;line-height:1.3}
+.bub.b h1{font-size:1.05rem}
+.bub.b h2{font-size:0.97rem;color:var(--accent2)}
+.bub.b h3{font-size:0.92rem;color:var(--accent2)}
+.bub.b p{margin:4px 0;line-height:1.65}
+.bub.b ul,.bub.b ol{margin:5px 0 5px 16px}
+.bub.b li{margin:2px 0;line-height:1.6}
+.bub.b strong{color:var(--accent2);font-weight:700}
+[data-theme="light"] .bub.b strong{color:var(--accent)}
+.bub.b em{font-style:italic;opacity:0.85}
+.bub.b code{font-family:var(--mono);background:rgba(124,111,255,0.12);color:var(--accent2);padding:1px 5px;border-radius:4px;font-size:11.5px}
+.bub.b pre{background:rgba(0,0,0,0.35);border:1px solid var(--border2);border-radius:8px;padding:10px;margin:6px 0;overflow-x:auto}
+[data-theme="light"] .bub.b pre{background:#f0f0ff}
+.bub.b pre code{background:none;padding:0;font-size:11.5px;color:#c9d1d9}
+.bub.b blockquote{border-left:3px solid var(--accent);padding-left:9px;margin:5px 0;color:var(--muted);font-style:italic}
+.bub.b hr{border:none;border-top:1px solid var(--border2);margin:7px 0}
+.bub.b table{width:100%;border-collapse:collapse;margin:7px 0;font-size:11.5px}
+.bub.b th{background:rgba(124,111,255,0.12);color:var(--accent2);padding:5px 9px;text-align:left;border:1px solid var(--border2)}
+.bub.b td{padding:4px 9px;border:1px solid var(--border)}
+.bub.b tr:nth-child(even) td{background:rgba(255,255,255,0.02)}
+
+/* CALCULATOR */
+.calc{background:var(--card-bg);border:1px solid var(--border2);border-radius:var(--r2);padding:1.2rem;box-shadow:var(--shadow)}
+.calc-display{background:var(--s3);border:1px solid var(--border);border-radius:var(--r);padding:12px 16px;margin-bottom:10px;text-align:right}
+.calc-expr{font-size:11px;color:var(--muted);font-family:var(--mono);min-height:16px;margin-bottom:4px;word-break:break-all}
+.calc-val{font-size:1.8rem;font-weight:700;font-family:var(--mono);letter-spacing:-0.02em;word-break:break-all}
+.calc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:7px}
+.ckey{padding:12px 8px;border-radius:10px;border:1px solid var(--border);background:var(--s2);color:var(--text);font-size:14px;font-family:var(--mono);font-weight:600;cursor:pointer;transition:all 0.12s;text-align:center}
+.ckey:hover{background:var(--s3);border-color:var(--border2)}
+.ckey:active{transform:scale(0.94)}
+.ckey.op{background:rgba(124,111,255,0.12);color:var(--accent2);border-color:rgba(124,111,255,0.2)}
+.ckey.op:hover{background:rgba(124,111,255,0.2)}
+.ckey.eq{background:linear-gradient(135deg,var(--accent),#8b5cf6);color:#fff;border-color:transparent;box-shadow:0 3px 10px rgba(124,111,255,0.3)}
+.ckey.eq:hover{opacity:0.9}
+.ckey.clr{color:var(--red);border-color:rgba(255,107,107,0.2)}
+.ckey.wide{grid-column:span 2}
+
+/* NOTES */
+.notes-card{background:var(--card-bg);border:1px solid var(--border2);border-radius:var(--r2);overflow:hidden;box-shadow:var(--shadow)}
+.notes-top{background:var(--s2);border-bottom:1px solid var(--border);padding:11px 14px;display:flex;align-items:center;justify-content:space-between}
+.notes-title{font-weight:700;font-size:13px;display:flex;align-items:center;gap:6px}
+.notes-actions{display:flex;gap:6px}
+.nbtn{font-size:11px;padding:4px 10px;border-radius:8px;border:1px solid var(--border);background:transparent;color:var(--muted);cursor:pointer;font-family:var(--font);transition:all 0.15s}
+.nbtn:hover{border-color:var(--accent);color:var(--accent2)}
+.nbtn.primary{background:var(--accent);color:#fff;border-color:transparent}
+.nbtn.primary:hover{opacity:0.88}
+.notes-list{padding:10px;display:flex;flex-direction:column;gap:7px;max-height:300px;overflow-y:auto}
+.note-item{background:var(--s2);border:1px solid var(--border);border-radius:var(--r);padding:10px 12px;position:relative;transition:border-color 0.15s}
+.note-item:hover{border-color:var(--border2)}
+.note-item-text{font-size:12.5px;color:var(--text);line-height:1.55;margin-bottom:4px;white-space:pre-wrap;word-break:break-word}
+.note-item-meta{font-size:10px;color:var(--muted2);font-family:var(--mono);display:flex;align-items:center;justify-content:space-between}
+.note-del{background:none;border:none;color:var(--muted2);cursor:pointer;font-size:11px;transition:color 0.15s}
+.note-del:hover{color:var(--red)}
+.note-input-wrap{padding:10px;border-top:1px solid var(--border)}
+.note-input{width:100%;background:var(--s3);border:1px solid var(--border);border-radius:var(--r);padding:9px 12px;font-size:13px;font-family:var(--font);color:var(--text);resize:vertical;min-height:70px;outline:none;transition:border 0.2s}
+.note-input:focus{border-color:var(--accent)}
+.note-input::placeholder{color:var(--muted2)}
+.notes-empty{text-align:center;padding:24px;font-size:12px;color:var(--muted2)}
+
+/* HISTORY CARD */
+.hist-list{padding:8px;max-height:220px;overflow-y:auto}
+.hist-item{padding:7px 10px;border-radius:8px;cursor:pointer;font-size:12px;color:var(--muted);display:flex;align-items:center;justify-content:space-between;transition:background 0.15s}
+.hist-item:hover{background:var(--s2);color:var(--text)}
+.hist-text{flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-right:8px}
+.hist-time{font-size:9.5px;font-family:var(--mono);color:var(--muted2);flex-shrink:0}
+.hist-empty{text-align:center;padding:20px;font-size:12px;color:var(--muted2)}
+
+/* HOW IT WORKS */
+.how{position:relative;z-index:1;max-width:760px;margin:0 auto;padding:1rem 1rem 3.5rem}
+.sec-title{font-size:1.2rem;font-weight:800;letter-spacing:-0.02em;margin-bottom:1rem;text-align:center}
+.sec-title span{background:linear-gradient(90deg,var(--accent),var(--accent3));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.fg{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:9px}
+.fc{background:var(--card-bg);border:1px solid var(--border);border-radius:var(--r);padding:0.9rem;transition:border-color 0.2s,transform 0.2s}
+.fc:hover{border-color:var(--border2);transform:translateY(-2px)}
+.fi{font-size:18px;margin-bottom:6px}
+.ft{font-size:12.5px;font-weight:700;margin-bottom:2px}
+.fd{font-size:11.5px;color:var(--muted);line-height:1.5}
+
+footer{position:relative;z-index:1;border-top:1px solid var(--border);text-align:center;padding:1rem;font-size:10.5px;color:var(--muted2);font-family:var(--mono)}
+
+@media(max-width:600px){.msgs{height:300px}h1{font-size:1.7rem}.fg{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+
+<div class="bg-mesh">
+  <div class="orb o1"></div><div class="orb o2"></div><div class="orb o3"></div>
+</div>
+
+<nav>
+  <div class="logo"><div class="logo-mark">A</div>Aria Pro</div>
+  <div class="pill live"><span class="ldot"></span>Online</div>
+  <div class="pill">Class 8</div>
+  <button class="nav-btn" id="themeBtn" onclick="toggleTheme()" title="Toggle theme">🌙</button>
+<button class="nav-btn" onclick="openThemePicker()" title="Custom theme" style="font-size:12px">🎨</button>
+<button class="nav-btn" onclick="openInstall()" title="Install as app" style="font-size:12px">📲</button>
+</nav>
+
+<!-- THEME PICKER MODAL -->
+<div id="themeModal" style="display:none;position:fixed;inset:0;z-index:1000;background:rgba(0,0,0,0.6);backdrop-filter:blur(8px);align-items:center;justify-content:center">
+  <div style="background:var(--s1);border:1px solid var(--border2);border-radius:20px;padding:1.5rem;max-width:340px;width:90%;box-shadow:0 20px 60px rgba(0,0,0,0.5)">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem">
+      <div style="font-weight:700;font-size:15px">🎨 Choose Your Theme</div>
+      <button onclick="closeThemePicker()" style="background:none;border:none;color:var(--muted);cursor:pointer;font-size:18px">✕</button>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:1rem" id="themeGrid"></div>
+    <div style="font-size:11px;color:var(--muted);margin-bottom:8px;font-family:var(--mono)">Custom Accent Color</div>
+    <div style="display:flex;gap:8px;align-items:center">
+      <input type="color" id="customColor" value="#7c6fff" style="width:40px;height:32px;border:1px solid var(--border2);border-radius:8px;background:none;cursor:pointer;padding:2px"/>
+      <button onclick="applyCustomColor()" style="flex:1;padding:7px;border-radius:8px;background:var(--accent);border:none;color:#fff;font-family:var(--font);font-size:12px;cursor:pointer;font-weight:600">Apply Color</button>
+    </div>
+  </div>
+</div>
+
+<!-- INSTALL GUIDE MODAL -->
+<div id="installModal" style="display:none;position:fixed;inset:0;z-index:1000;background:rgba(0,0,0,0.7);backdrop-filter:blur(8px);align-items:center;justify-content:center;padding:1rem">
+  <div style="background:var(--s1);border:1px solid var(--border2);border-radius:20px;padding:1.5rem;max-width:380px;width:100%;box-shadow:0 20px 60px rgba(0,0,0,0.5);max-height:90vh;overflow-y:auto">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1.2rem">
+      <div style="font-weight:800;font-size:16px">📲 Install Aria Pro</div>
+      <button onclick="closeInstall()" style="background:none;border:none;color:var(--muted);cursor:pointer;font-size:20px;line-height:1">✕</button>
+    </div>
+
+    <!-- Browser tabs -->
+    <div style="display:flex;gap:6px;margin-bottom:1.2rem">
+      <button onclick="showInstallTab('chrome')" id="itab-chrome" class="itab active-itab" style="flex:1;padding:7px;border-radius:8px;border:1px solid var(--accent);background:rgba(124,111,255,0.15);color:var(--accent2);font-size:11px;cursor:pointer;font-family:var(--font);font-weight:600">🟢 Chrome</button>
+      <button onclick="showInstallTab('safari')" id="itab-safari" class="itab" style="flex:1;padding:7px;border-radius:8px;border:1px solid var(--border);background:transparent;color:var(--muted);font-size:11px;cursor:pointer;font-family:var(--font);font-weight:600">🔵 Safari</button>
+      <button onclick="showInstallTab('edge')" id="itab-edge" class="itab" style="flex:1;padding:7px;border-radius:8px;border:1px solid var(--border);background:transparent;color:var(--muted);font-size:11px;cursor:pointer;font-family:var(--font);font-weight:600">🔷 Edge</button>
+    </div>
+
+    <!-- Chrome steps -->
+    <div id="install-chrome">
+      <div style="font-size:12px;color:var(--muted);margin-bottom:10px;font-family:var(--mono)">Android · Chrome Browser</div>
+      <div class="install-step"><span class="step-num">1</span><span>Open your Aria link in <strong>Chrome</strong> on Android</span></div>
+      <div class="install-step"><span class="step-num">2</span><span>Tap the <strong>⋮ three dots</strong> menu in the top right corner</span></div>
+      <div class="install-step"><span class="step-num">3</span><span>Tap <strong>"Add to Home Screen"</strong></span></div>
+      <div class="install-step"><span class="step-num">4</span><span>Tap <strong>"Add"</strong> to confirm</span></div>
+      <div class="install-step"><span class="step-num">5</span><span>🎉 Aria icon appears on your home screen!</span></div>
+      <div style="margin-top:12px;padding:10px;background:rgba(0,229,160,0.08);border:1px solid rgba(0,229,160,0.2);border-radius:10px;font-size:11.5px;color:var(--green)">
+        💡 Or look for the <strong>install popup</strong> that Chrome shows at the bottom of the screen automatically!
+      </div>
+    </div>
+
+    <!-- Safari steps -->
+    <div id="install-safari" style="display:none">
+      <div style="font-size:12px;color:var(--muted);margin-bottom:10px;font-family:var(--mono)">iPhone / iPad · Safari Browser</div>
+      <div class="install-step"><span class="step-num">1</span><span>Open your Aria link in <strong>Safari</strong> on iPhone/iPad</span></div>
+      <div class="install-step"><span class="step-num">2</span><span>Tap the <strong>Share button</strong> (box with arrow ↑) at the bottom</span></div>
+      <div class="install-step"><span class="step-num">3</span><span>Scroll down and tap <strong>"Add to Home Screen"</strong></span></div>
+      <div class="install-step"><span class="step-num">4</span><span>Edit the name if you want, then tap <strong>"Add"</strong></span></div>
+      <div class="install-step"><span class="step-num">5</span><span>🎉 Aria icon appears on your iPhone home screen!</span></div>
+      <div style="margin-top:12px;padding:10px;background:rgba(78,205,196,0.08);border:1px solid rgba(78,205,196,0.2);border-radius:10px;font-size:11.5px;color:var(--blue)">
+        ⚠️ <strong>Must use Safari</strong> — Chrome on iPhone doesn't support "Add to Home Screen" properly.
+      </div>
+    </div>
+
+    <!-- Edge steps -->
+    <div id="install-edge" style="display:none">
+      <div style="font-size:12px;color:var(--muted);margin-bottom:10px;font-family:var(--mono)">Windows / Android · Microsoft Edge</div>
+      <div class="install-step"><span class="step-num">1</span><span>Open your Aria link in <strong>Microsoft Edge</strong></span></div>
+      <div class="install-step"><span class="step-num">2</span><span>Look for the <strong>install icon</strong> (⊕ or computer icon) in the address bar</span></div>
+      <div class="install-step"><span class="step-num">3</span><span>Click it and select <strong>"Install"</strong></span></div>
+      <div class="install-step"><span class="step-num">4</span><span>Or tap <strong>⋯ menu → Apps → Install this site as an app</strong></span></div>
+      <div class="install-step"><span class="step-num">5</span><span>🎉 Aria opens like a real desktop/phone app!</span></div>
+      <div style="margin-top:12px;padding:10px;background:rgba(124,111,255,0.08);border:1px solid rgba(124,111,255,0.2);border-radius:10px;font-size:11.5px;color:var(--accent2)">
+        💡 On <strong>Windows</strong>, Aria will appear in your Start Menu and taskbar just like a real app!
+      </div>
+    </div>
+
+    <button onclick="closeInstall()" style="width:100%;margin-top:1.2rem;padding:10px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#8b5cf6);border:none;color:#fff;font-family:var(--font);font-size:13px;font-weight:700;cursor:pointer">Got it! ✓</button>
+  </div>
+</div>
+
+<!-- WEATHER WIDGET -->
+<div id="weatherBar" style="display:none;position:relative;z-index:2;max-width:760px;margin:0 auto;padding:0 1rem 0.5rem">
+  <div style="background:var(--s1);border:1px solid var(--border2);border-radius:14px;padding:10px 14px;display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+    <div style="font-size:20px" id="wIcon">🌤️</div>
+    <div style="flex:1;min-width:0">
+      <div style="font-size:12px;font-weight:600" id="wMain">Loading weather...</div>
+      <div style="font-size:10.5px;color:var(--muted);font-family:var(--mono)" id="wSub"></div>
+    </div>
+    <div style="font-size:1.4rem;font-weight:800;font-family:var(--mono);letter-spacing:-0.02em" id="wTemp"></div>
+    <button onclick="document.getElementById('weatherBar').style.display='none'" style="background:none;border:none;color:var(--muted2);cursor:pointer;font-size:14px">✕</button>
+  </div>
+</div>
+
+<section class="hero">
+  <div class="badge">✦ Ultimate Edition v3</div>
+  <h1>Meet <em>Aria Pro</em><br>Your Smartest AI</h1>
+  <p class="hero-sub">Streaming AI · Voice · Image Upload · Calculator · Notes · 6 Languages · Subject Modes</p>
+  <div class="feat-row">
+    <span class="ftag">⚡ Streaming</span><span class="ftag">🎤 Voice</span><span class="ftag">📷 Image</span>
+    <span class="ftag">🧮 Calc</span><span class="ftag">📝 Notes</span><span class="ftag">🌍 Languages</span>
+    <span class="ftag">📚 Subjects</span><span class="ftag">😊 Reactions</span><span class="ftag">🌙 Themes</span>
+  </div>
+</section>
+
+<!-- SUBJECT TABS -->
+<div class="tabs-wrap">
+  <div class="tabs" id="subjTabs">
+    <button class="tab active" data-s="general" onclick="setSubj(this)">🌟 General</button>
+    <button class="tab" data-s="maths" onclick="setSubj(this)">📐 Maths</button>
+    <button class="tab" data-s="science" onclick="setSubj(this)">🔬 Science</button>
+    <button class="tab" data-s="english" onclick="setSubj(this)">📖 English</button>
+    <button class="tab" data-s="history" onclick="setSubj(this)">🏛️ History</button>
+    <button class="tab" data-s="computer" onclick="setSubj(this)">💻 Computer</button>
+    <button class="tab" data-s="geo" onclick="setSubj(this)">🌍 Geography</button>
+  </div>
+</div>
+
+<!-- MAIN PANELS -->
+<div class="main">
+
+  <!-- PANEL SWITCHER -->
+  <div class="tabs-wrap" style="padding:0 0 0.75rem">
+    <div class="tabs" style="max-width:340px">
+      <button class="tab active" onclick="switchPanel('chat',this)">💬 Chat</button>
+      <button class="tab" onclick="switchPanel('calc',this)">🧮 Calc</button>
+      <button class="tab" onclick="switchPanel('notes',this)">📝 Notes</button>
+      <button class="tab" onclick="switchPanel('goals',this)">🎯 Goals</button>
+      <button class="tab" onclick="switchPanel('memory',this)">🧠 Memory</button>
+      <button class="tab" onclick="switchPanel('hist',this)">💾 History</button>
+    </div>
+  </div>
+
+  <!-- CHAT PANEL -->
+  <div class="panel active" id="panel-chat">
+    <div class="card">
+      <div class="topbar">
+        <div class="av-wrap"><div class="av">AI</div><div class="av-dot"></div></div>
+        <div class="tb-info">
+          <div class="tb-name">Aria Pro</div>
+          <div class="tb-mode" id="modeLabel">General Assistant</div>
+        </div>
+        <div class="tb-acts">
+          <button class="tact" id="wbBtn" onclick="toggleWS()" title="Web Search">🌐</button>
+          <button class="tact" id="voBtn" onclick="toggleVO()" title="Voice Output">🔊</button>
+          <button class="tact" onclick="clearChat()" title="Clear">🗑️</button>
+        </div>
+      </div>
+
+      <div class="msgs" id="msgs"></div>
+      <div class="chips" id="chips"></div>
+
+      <div class="input-area">
+        <div id="imgPreviewArea"></div>
+        <div class="input-row">
+          <div class="input-box">
+            <label class="img-label" title="Upload image">
+              📷<input type="file" id="imgInput" accept="image/*" onchange="handleImg(event)"/>
+            </label>
+            <input id="msgInput" type="text" placeholder="Ask Aria anything…" maxlength="600" autocomplete="off"/>
+            <button class="mic-btn" id="micBtn" onclick="toggleMic()" title="Voice input">🎤</button>
+          </div>
+          <button class="send-btn" onclick="sendMsg()">
+            <svg viewBox="0 0 24 24"><path d="M2 21l21-9L2 3v7l15 2-15 2z"/></svg>
+          </button>
+        </div>
+        <div class="toolbar">
+          <button class="tbtn" id="wsBtnT" onclick="toggleWS()">🌐 Search: <span id="wsLbl">OFF</span></button>
+          <button class="tbtn" id="voBtnT" onclick="toggleVO()">🔊 Voice: <span id="voLbl">OFF</span></button>
+          <button class="tbtn" onclick="loadWeather()">🌤️ Weather</button>
+          <div class="tspacer"></div>
+          <select class="lang-sel" id="langSel" title="Language">
+            <option value="en">🇬🇧 English</option>
+            <option value="hi">🇮🇳 Hindi</option>
+            <option value="bn">🇧🇩 Bengali</option>
+            <option value="ta">🇮🇳 Tamil</option>
+            <option value="te">🇮🇳 Telugu</option>
+            <option value="fr">🇫🇷 French</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CALCULATOR PANEL -->
+  <div class="panel" id="panel-calc">
+    <div class="calc">
+      <div class="calc-display">
+        <div class="calc-expr" id="calcExpr"></div>
+        <div class="calc-val" id="calcVal">0</div>
+      </div>
+      <div class="calc-grid">
+        <button class="ckey clr" onclick="calcAC()">AC</button>
+        <button class="ckey op" onclick="calcSign()">+/-</button>
+        <button class="ckey op" onclick="calcPct()">%</button>
+        <button class="ckey op" onclick="calcOp('/')">÷</button>
+
+        <button class="ckey" onclick="calcNum('7')">7</button>
+        <button class="ckey" onclick="calcNum('8')">8</button>
+        <button class="ckey" onclick="calcNum('9')">9</button>
+        <button class="ckey op" onclick="calcOp('*')">×</button>
+
+        <button class="ckey" onclick="calcNum('4')">4</button>
+        <button class="ckey" onclick="calcNum('5')">5</button>
+        <button class="ckey" onclick="calcNum('6')">6</button>
+        <button class="ckey op" onclick="calcOp('-')">−</button>
+
+        <button class="ckey" onclick="calcNum('1')">1</button>
+        <button class="ckey" onclick="calcNum('2')">2</button>
+        <button class="ckey" onclick="calcNum('3')">3</button>
+        <button class="ckey op" onclick="calcOp('+')">+</button>
+
+        <button class="ckey wide" onclick="calcNum('0')">0</button>
+        <button class="ckey" onclick="calcDot()">.</button>
+        <button class="ckey eq" onclick="calcEq()">=</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- NOTES PANEL -->
+  <div class="panel" id="panel-notes">
+    <div class="notes-card">
+      <div class="notes-top">
+        <div class="notes-title">📝 My Notes</div>
+        <div class="notes-actions">
+          <button class="nbtn" onclick="exportNotes()">Export</button>
+          <button class="nbtn" onclick="clearNotes()" style="color:var(--red)">Clear All</button>
+        </div>
+      </div>
+      <div class="notes-list" id="notesList"></div>
+      <div class="note-input-wrap">
+        <textarea class="note-input" id="noteInput" placeholder="Write a note, paste an answer, or summarise something…"></textarea>
+        <div style="display:flex;justify-content:flex-end;margin-top:6px">
+          <button class="nbtn primary" onclick="saveNote()">Save Note</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- GOALS PANEL -->
+  <div class="panel" id="panel-goals">
+    <div class="notes-card">
+      <div class="notes-top">
+        <div class="notes-title">🎯 Goal Tracker</div>
+        <div class="notes-actions">
+          <button class="nbtn primary" onclick="openGoalForm()">+ Add Goal</button>
+        </div>
+      </div>
+      <div id="goalFormWrap" style="display:none;padding:10px;border-bottom:1px solid var(--border)">
+        <input id="goalInput" placeholder="Enter your goal (e.g. Score 90% in Maths)" style="width:100%;background:var(--s3);border:1px solid var(--border);border-radius:var(--r);padding:8px 12px;font-size:13px;font-family:var(--font);color:var(--text);outline:none;margin-bottom:7px"/>
+        <div style="display:flex;gap:7px">
+          <select id="goalCat" style="flex:1;background:var(--s3);border:1px solid var(--border);border-radius:var(--r);padding:7px;font-size:12px;font-family:var(--font);color:var(--text);outline:none">
+            <option value="study">📚 Study</option>
+            <option value="fitness">💪 Fitness</option>
+            <option value="habit">✅ Habit</option>
+            <option value="project">🚀 Project</option>
+          </select>
+          <input type="date" id="goalDeadline" style="flex:1;background:var(--s3);border:1px solid var(--border);border-radius:var(--r);padding:7px;font-size:12px;font-family:var(--font);color:var(--text);outline:none"/>
+        </div>
+        <div style="display:flex;gap:6px;margin-top:7px">
+          <button class="nbtn" onclick="closeGoalForm()" style="flex:1">Cancel</button>
+          <button class="nbtn primary" onclick="saveGoal()" style="flex:2">Save Goal</button>
+        </div>
+      </div>
+      <div id="goalsList" style="padding:10px;max-height:320px;overflow-y:auto"></div>
+    </div>
+
+    <!-- DECISIONS HELPER -->
+    <div class="notes-card" style="margin-top:0">
+      <div class="notes-top"><div class="notes-title">🤔 Decision Helper</div></div>
+      <div style="padding:12px;display:flex;flex-direction:column;gap:8px">
+        <div style="font-size:12px;color:var(--muted)">Stuck on a decision? Let Aria help you choose!</div>
+        <input id="decInput" placeholder='e.g. "Should I study now or after dinner?"' style="background:var(--s3);border:1px solid var(--border);border-radius:var(--r);padding:8px 12px;font-size:13px;font-family:var(--font);color:var(--text);outline:none;width:100%"/>
+        <button onclick="makeDecision()" class="nbtn primary" style="align-self:flex-end;padding:7px 20px">Ask Aria 🤔</button>
+        <div id="decResult" style="font-size:13px;line-height:1.6;color:var(--text);display:none;background:var(--s3);border:1px solid var(--border);border-radius:var(--r);padding:10px"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MEMORY PANEL -->
+  <div class="panel" id="panel-memory">
+    <div class="notes-card">
+      <div class="notes-top">
+        <div class="notes-title">🧠 Aria's Memory</div>
+        <div class="notes-actions">
+          <button class="nbtn" onclick="clearMemory()" style="color:var(--red)">Clear</button>
+        </div>
+      </div>
+      <div style="padding:10px">
+        <div style="font-size:11.5px;color:var(--muted);margin-bottom:10px;line-height:1.6">Aria remembers important things you tell her — your interests, struggles, and what you've studied. This makes her smarter over time!</div>
+        <div id="memoryList" style="display:flex;flex-direction:column;gap:6px;max-height:280px;overflow-y:auto"></div>
+      </div>
+    </div>
+
+    <!-- SELF IMPROVEMENT LOG -->
+    <div class="notes-card" style="margin-top:0">
+      <div class="notes-top"><div class="notes-title">📊 AI Self-Improvement Log</div></div>
+      <div id="improveLog" style="padding:10px;max-height:180px;overflow-y:auto;font-size:12px;color:var(--muted);line-height:1.7">
+        <div style="color:var(--muted2);text-align:center;padding:16px">No logs yet. Start chatting to build up improvement data!</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HISTORY PANEL -->
+  <div class="panel" id="panel-hist">
+    <div class="card">
+      <div class="topbar" style="justify-content:space-between">
+        <div class="tb-name" style="font-size:13px">💾 Chat History</div>
+        <button class="tact" onclick="clearHistory()" title="Clear history" style="width:auto;padding:0 8px;font-size:11px">Clear All</button>
+      </div>
+      <div class="hist-list" id="histList"></div>
+    </div>
+  </div>
+
+</div>
+
+<!-- HOW IT WORKS -->
+<section class="how">
+  <h2 class="sec-title">What makes <span>Aria Pro</span> special</h2>
+  <div class="fg">
+    <div class="fc"><div class="fi">⚡</div><div class="ft">Streaming AI</div><div class="fd">Answers appear word by word, just like ChatGPT.</div></div>
+    <div class="fc"><div class="fi">🎤</div><div class="ft">Voice Input</div><div class="fd">Speak your question in any language.</div></div>
+    <div class="fc"><div class="fi">🔊</div><div class="ft">Voice Output</div><div class="fd">Aria reads answers aloud to you.</div></div>
+    <div class="fc"><div class="fi">📷</div><div class="ft">Image Upload</div><div class="fd">Upload a photo and ask Aria about it.</div></div>
+    <div class="fc"><div class="fi">🧮</div><div class="ft">Calculator</div><div class="fd">Built-in calculator for quick maths.</div></div>
+    <div class="fc"><div class="fi">📝</div><div class="ft">Notes</div><div class="fd">Save important answers and export them.</div></div>
+    <div class="fc"><div class="fi">🌍</div><div class="ft">6 Languages</div><div class="fd">Chat in Hindi, Bengali, Tamil and more.</div></div>
+    <div class="fc"><div class="fi">😊</div><div class="ft">Reactions</div><div class="fd">React to any answer with an emoji.</div></div>
+  </div>
+</section>
+
+<footer>Aria Pro v3 &nbsp;·&nbsp; Class 8 AI Project &nbsp;·&nbsp; Built with HTML + CSS + JS &nbsp;·&nbsp; OpenRouter AI</footer>
+
+<script>
+const OR_KEY = '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';
+const MODEL = 'google/gemini-2.0-flash-001';
+const msgsEl = document.getElementById('msgs');
+const inputEl = document.getElementById('msgInput');
+const chipsEl = document.getElementById('chips');
+let waiting = false, wsOn = false, voOn = false, recording = false, recog = null;
+let history = [], currentSubj = 'general', pendingImg = null;
+let userProfile = JSON.parse(localStorage.getItem('aria_profile') || '{"name":"Ryan","class":"8"}');
+function saveProfile(){ try{ localStorage.setItem('aria_profile', JSON.stringify(userProfile)); }catch(e){} }
+
+const SUBJS = {
+  general:{label:'General Assistant',chips:['What is AI?','Tell me a fun fact','Help with homework','Explain something cool'],
+    prompt:()=>`You are Aria Pro, a brilliant AI assistant like ChatGPT for a student named ${userProfile.name} in Class ${userProfile.cls||8}. You always know the current date and time which is provided in each message. Use ${userProfile.name}'s name naturally in conversation. Be warm, smart, and encouraging. Give detailed accurate answers. Use markdown with headers, bold, lists and tables. Never refuse — always try your best.`},
+  maths:{label:'Maths Tutor',chips:['Solve: 2x + 5 = 15','Explain fractions','What is BODMAS?','Area of a circle'],
+    prompt:()=>`You are Aria Pro, an expert Class 8 maths tutor for ${userProfile.name}. Use their name warmly. Solve every problem step by step with full working shown. Use markdown headers. Use LaTeX ($$...$$) for all equations. Cover NCERT Class 8 maths. Be patient and encouraging.`},
+  science:{label:'Science Tutor',chips:['Explain photosynthesis','What is gravity?','How do cells divide?','Acids and bases'],
+    prompt:()=>`You are Aria Pro, a brilliant science teacher for ${userProfile.name} (Class 8). Use their name. Cover Physics, Chemistry and Biology from NCERT Class 8. Give clear explanations with real-world examples and markdown formatting. Make science exciting!`},
+  english:{label:'English Tutor',chips:['Check my grammar','What is a metaphor?','Help write an essay','Explain tenses'],
+    prompt:()=>`You are Aria Pro, a skilled English tutor for ${userProfile.name} (Class 8). Use their name. Help with grammar, writing, comprehension and literature. Show corrections in markdown tables. Cover Class 8 English syllabus.`},
+  history:{label:'History Tutor',chips:['Tell me about WW2','Who was Gandhi?','Mughal Empire','French Revolution'],
+    prompt:()=>`You are Aria Pro, a knowledgeable history tutor for ${userProfile.name} (Class 8). Use their name. Cover Indian and world history from NCERT Class 8. Use bold for key dates and names. Make history feel like an exciting story.`},
+  computer:{label:'CS Tutor',chips:['What is a CPU?','Explain the internet','What is an algorithm?','What is binary?'],
+    prompt:()=>`You are Aria Pro, a Computer Science expert for ${userProfile.name} (Class 8). Use their name. Explain tech concepts simply with good analogies. Use code blocks for code. Cover hardware, software, internet and programming.`},
+  geo:{label:'Geography Tutor',chips:['What causes earthquakes?','Climate zones','What is erosion?','Largest countries'],
+    prompt:()=>`You are Aria Pro, a geography tutor for ${userProfile.name} (Class 8). Use their name. Cover physical and human geography from NCERT Class 8. Use markdown tables for comparisons. Give examples from India and the world.`}
+}
+
+const LANGS = {en:'Respond in English.',hi:'Respond in Hindi (हिंदी में जवाब दें).',bn:'Respond in Bengali (বাংলায় উত্তর দিন).',ta:'Respond in Tamil (தமிழில் பதிலளிக்கவும்).',te:'Respond in Telugu (తెలుగులో సమాధానం ఇవ్వండి).',fr:'Respond in French (Répondez en français).'};
+
+// Theme
+function toggleTheme(){
+  const t=document.documentElement.dataset.theme==='dark'?'light':'dark';
+  document.documentElement.dataset.theme=t;
+  document.getElementById('themeBtn').textContent=t==='dark'?'🌙':'☀️';
+}
+
+// Panel switch
+function switchPanel(id,btn){
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+  document.getElementById('panel-'+id).classList.add('active');
+  btn.closest('.tabs').querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  btn.classList.add('active');
+  if(id==='hist') renderHistory();
+  if(id==='notes') renderNotes();
+  if(id==='goals') renderGoals();
+  if(id==='memory'){ renderMemory(); renderImproveLog(); }
+}
+
+// Subject
+function setSubj(btn){
+  document.querySelectorAll('#subjTabs .tab').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  currentSubj=btn.dataset.s;
+  document.getElementById('modeLabel').textContent=SUBJS[currentSubj].label;
+  history=[];
+  msgsEl.innerHTML='';
+  renderChips();
+  addBotMsg(`Switched to **${SUBJS[currentSubj].label}** mode! 🎯 Ask me anything.`);
+  addTime();
+}
+
+function renderChips(){
+  chipsEl.innerHTML='';
+  (SUBJS[currentSubj]?.chips||[]).forEach(c=>{
+    const b=document.createElement('button');
+    b.className='chip';b.textContent=c;
+    b.onclick=()=>quickSend(c);
+    chipsEl.appendChild(b);
+  });
+}
+
+// Messages
+function mdRender(text){
+  try{
+    marked.setOptions({breaks:true,gfm:true});
+    return marked.parse(text);
+  }catch(e){return text}
+}
+
+function addBotMsg(text,isSearch=false){
+  const row=document.createElement('div');
+  row.className='mrow b';
+  const av=document.createElement('div');av.className='mav b';av.textContent='AI';
+  const bwrap=document.createElement('div');bwrap.className='bwrap';
+  if(isSearch){const sb=document.createElement('div');sb.className='sbadge';sb.innerHTML='🌐 Web';bwrap.appendChild(sb);}
+  const bub=document.createElement('div');bub.className='bub b';
+  bub.innerHTML=mdRender(text);
+  if(window.renderMathInElement)renderMathInElement(bub,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});
+  bwrap.appendChild(bub);
+  // Reactions
+  const reacts=document.createElement('div');reacts.className='reactions';
+  ['👍','❤️','🔥','😮','💡'].forEach(e=>{
+    const rb=document.createElement('button');rb.className='react-btn';rb.textContent=e;
+    rb.onclick=()=>{rb.classList.toggle('picked');};
+    reacts.appendChild(rb);
+  });
+  // Save to notes btn
+  const snb=document.createElement('button');
+  snb.className='react-btn';snb.title='Save to notes';snb.textContent='📝';
+  snb.onclick=()=>{saveNoteFromText(text);snb.textContent='✅';setTimeout(()=>snb.textContent='📝',1500)};
+  reacts.appendChild(snb);
+  bwrap.appendChild(reacts);
+  row.appendChild(av);row.appendChild(bwrap);
+  msgsEl.appendChild(row);
+  msgsEl.scrollTop=msgsEl.scrollHeight;
+  if(voOn)speakText(text.replace(/[#*`_\[\]]/g,''));
+  return bub;
+}
+
+function addUserMsg(text){
+  const row=document.createElement('div');row.className='mrow u';
+  const av=document.createElement('div');av.className='mav u';av.textContent='U';
+  const bwrap=document.createElement('div');bwrap.className='bwrap';
+  const bub=document.createElement('div');bub.className='bub u';bub.textContent=text;
+  bwrap.appendChild(bub);
+  row.appendChild(av);row.appendChild(bwrap);
+  msgsEl.appendChild(row);
+  msgsEl.scrollTop=msgsEl.scrollHeight;
+}
+
+function addTime(){
+  const d=document.createElement('div');d.className='ts';
+  d.textContent=new Date().toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'});
+  msgsEl.appendChild(d);
+}
+
+function clearChat(){
+  msgsEl.innerHTML='';history=[];chipsEl.style.display='flex';
+  addBotMsg("Chat cleared! Ready to help. Ask me anything 😊");addTime();
+}
+
+// Streaming send
+async function sendMsg(){
+  const text=inputEl.value.trim();
+  if((!text&&!pendingImg)||waiting)return;
+
+  // Handle name setup on first run
+  if(userProfile.awaitingName && text && !pendingImg){
+    userProfile.name = text.charAt(0).toUpperCase() + text.slice(1).toLowerCase();
+    userProfile.awaitingName = false;
+    saveProfile();
+    inputEl.value='';
+    addUserMsg(text);
+    addBotMsg(`Nice to meet you, **${userProfile.name}!** 🎉\n\nI'll remember your name from now on. Today is **${new Date().toLocaleDateString('en-IN',{weekday:'long',year:'numeric',month:'long',day:'numeric'})}**.\n\nPick a subject above or just ask me anything — I'm here to help! 🚀`);
+    addTime();
+    return;
+  }
+
+  inputEl.value='';
+  waiting=true;chipsEl.style.display='none';
+  const lang=document.getElementById('langSel').value;
+  const langNote=LANGS[lang]||'';
+  const now = new Date();
+    const dateStr = now.toLocaleDateString('en-IN',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
+    const timeStr = now.toLocaleTimeString('en-IN',{hour:'2-digit',minute:'2-digit'});
+    const dateNote = `Today is ${dateStr} and the current time is ${timeStr} (India).`;
+    const memCtx = getMemoryContext();
+    const sysPrompt = (SUBJS[currentSubj]?.prompt ? SUBJS[currentSubj].prompt() : SUBJS.general.prompt()) + ' ' + langNote + ' ' + dateNote + memCtx + (wsOn?' If asked about current events, use your best knowledge and suggest verifying online.':'');
+
+  // Build message content
+  let userContent;
+  if(pendingImg){
+    userContent=[{type:'text',text:text||'Describe this image in detail.'},{type:'image_url',image_url:{url:pendingImg}}];
+    // Show image preview in chat
+    const row=document.createElement('div');row.className='mrow u';
+    const av=document.createElement('div');av.className='mav u';av.textContent='U';
+    const bwrap=document.createElement('div');bwrap.className='bwrap';
+    const img=document.createElement('img');img.src=pendingImg;img.style.cssText='max-height:100px;border-radius:8px;margin-bottom:4px;border:1px solid var(--border2)';
+    bwrap.appendChild(img);
+    if(text){const bub=document.createElement('div');bub.className='bub u';bub.textContent=text;bwrap.appendChild(bub);}
+    row.appendChild(av);row.appendChild(bwrap);msgsEl.appendChild(row);
+    clearImgPreview();
+  } else {
+    userContent=text;
+    addUserMsg(text);
+  }
+  addTime();
+  history.push({role:'user',content:userContent});
+
+  // Streaming bubble
+  const row=document.createElement('div');row.className='mrow b';
+  const av=document.createElement('div');av.className='mav b';av.textContent='AI';
+  const bwrap=document.createElement('div');bwrap.className='bwrap';
+  if(wsOn){const sb=document.createElement('div');sb.className='sbadge';sb.innerHTML='🌐 Web';bwrap.appendChild(sb);}
+  const bub=document.createElement('div');bub.className='bub b';
+  const cursor=document.createElement('span');cursor.className='cursor';
+  bub.appendChild(cursor);
+  bwrap.appendChild(bub);row.appendChild(av);row.appendChild(bwrap);
+  msgsEl.appendChild(row);msgsEl.scrollTop=msgsEl.scrollHeight;
+
+  let fullText='';
+  try{
+    // Try streaming first
+    let streamWorked = false;
+    try {
+      const res=await fetch('https://openrouter.ai/api/v1/chat/completions',{
+        method:'POST',
+        headers:{'Content-Type':'application/json','Authorization':'Bearer '+OR_KEY,'HTTP-Referer':'https://aria-chatbot.netlify.app','X-Title':'Aria Pro'},
+        body:JSON.stringify({model:MODEL,stream:true,max_tokens:500,messages:[{role:'system',content:sysPrompt},...history]})
+      });
+      if(!res.ok){const e=await res.json();throw new Error(e.error?.message||'API error '+res.status);}
+      const reader=res.body.getReader();const decoder=new TextDecoder();
+      while(true){
+        const{done,value}=await reader.read();if(done)break;
+        const chunk=decoder.decode(value);
+        const lines=chunk.split('\n');
+        for(const line of lines){
+          if(!line.startsWith('data:'))continue;
+          const data=line.slice(5).trim();
+          if(data==='[DONE]')break;
+          try{
+            const j=JSON.parse(data);
+            const delta=j.choices?.[0]?.delta?.content||'';
+            fullText+=delta;
+            bub.innerHTML=mdRender(fullText);
+            const cur2=document.createElement('span');cur2.className='cursor';
+            bub.appendChild(cur2);
+            msgsEl.scrollTop=msgsEl.scrollHeight;
+          }catch{}
+        }
+      }
+      streamWorked = true;
+    } catch(streamErr) {
+      // Fallback: non-streaming
+      fullText = '';
+      bub.innerHTML = '<span style="color:var(--muted)">Thinking...</span>';
+      const res2 = await fetch('https://openrouter.ai/api/v1/chat/completions',{
+        method:'POST',
+        headers:{'Content-Type':'application/json','Authorization':'Bearer '+OR_KEY,'HTTP-Referer':'https://aria-chatbot.netlify.app','X-Title':'Aria Pro'},
+        body:JSON.stringify({model:MODEL,stream:false,max_tokens:500,messages:[{role:'system',content:sysPrompt},...history]})
+      });
+      if(!res2.ok){const e=await res2.json();throw new Error(e.error?.message||'API error '+res2.status);}
+      const data2 = await res2.json();
+      if(data2.error) throw new Error(data2.error.message||JSON.stringify(data2.error));
+      fullText = data2.choices?.[0]?.message?.content || 'I had trouble with that. Please try again!';
+    }
+
+    // Final render
+    bub.innerHTML=mdRender(fullText);
+    if(window.renderMathInElement)renderMathInElement(bub,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});
+    // Add reactions
+    const reacts=document.createElement('div');reacts.className='reactions';
+    ['👍','❤️','🔥','😮','💡'].forEach(e=>{
+      const rb=document.createElement('button');rb.className='react-btn';rb.textContent=e;
+      rb.onclick=()=>rb.classList.toggle('picked');reacts.appendChild(rb);
+    });
+    const snb=document.createElement('button');snb.className='react-btn';snb.title='Save to notes';snb.textContent='📝';
+    snb.onclick=()=>{saveNoteFromText(fullText);snb.textContent='✅';setTimeout(()=>snb.textContent='📝',1500)};
+    reacts.appendChild(snb);bwrap.appendChild(reacts);
+    addTime();
+    history.push({role:'assistant',content:fullText});
+    saveHistory(typeof userContent==='string'?userContent:'[Image] '+(text||'describe'),fullText);
+    // Extract memories and log improvement
+    const userText = typeof userContent==='string' ? userContent : (text||'image query');
+    extractMemories(userText, fullText);
+    // Self improvement log
+    const wordCount = fullText.split(' ').length;
+    addImproveLog(`Answered in ${wordCount} words on topic: "${userText.slice(0,40)}" [${SUBJS[currentSubj]?.label||'General'}]`);
+    if(voOn)speakText(fullText.replace(/[#*`_\[\]]/g,''));
+  }catch(e){
+    bub.innerHTML='<span style="color:var(--red)">Error: '+(e.message||'Connection failed. Check internet.')+'</span>';
+    addTime();
+  }
+  waiting=false;
+}
+
+function quickSend(t){inputEl.value=t;sendMsg();}
+
+// Web Search toggle
+function toggleWS(){
+  wsOn=!wsOn;
+  document.getElementById('wsLbl').textContent=wsOn?'ON':'OFF';
+  document.getElementById('wbBtn').classList.toggle('on',wsOn);
+  document.getElementById('wsBtnT').classList.toggle('on',wsOn);
+}
+
+// Voice Output
+function toggleVO(){
+  voOn=!voOn;
+  document.getElementById('voLbl').textContent=voOn?'ON':'OFF';
+  document.getElementById('voBtn').classList.toggle('on',voOn);
+  document.getElementById('voBtnT').classList.toggle('on',voOn);
+  if(voOn)speakText('Voice output enabled.');
+}
+function speakText(t){
+  if(!('speechSynthesis' in window))return;
+  window.speechSynthesis.cancel();
+  const u=new SpeechSynthesisUtterance(t);u.rate=0.95;u.pitch=1.05;
+  const vs=window.speechSynthesis.getVoices();
+  const pref=vs.find(v=>v.name.includes('Female')||v.name.includes('Samantha')||v.name.includes('Google UK English Female'));
+  if(pref)u.voice=pref;
+  window.speechSynthesis.speak(u);
+}
+
+// Voice Input
+function toggleMic(){
+  if(!('webkitSpeechRecognition' in window||'SpeechRecognition' in window)){
+    addBotMsg('Voice input not supported. Try Chrome on Android.');addTime();return;
+  }
+  if(recording){recog?.stop();return;}
+  const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
+  recog=new SR();recog.lang='en-IN';recog.interimResults=false;
+  recog.onstart=()=>{recording=true;document.getElementById('micBtn').classList.add('rec');document.getElementById('micBtn').textContent='⏹️';inputEl.placeholder='Listening…';};
+  recog.onresult=e=>{inputEl.value=e.results[0][0].transcript;sendMsg();};
+  recog.onend=()=>{recording=false;document.getElementById('micBtn').classList.remove('rec');document.getElementById('micBtn').textContent='🎤';inputEl.placeholder='Ask Aria anything…';};
+  recog.onerror=()=>recog.onend();
+  recog.start();
+}
+
+// Image Upload
+function handleImg(e){
+  const file=e.target.files[0];if(!file)return;
+  const reader=new FileReader();
+  reader.onload=ev=>{
+    pendingImg=ev.target.result;
+    const wrap=document.getElementById('imgPreviewArea');
+    wrap.innerHTML='';
+    const pw=document.createElement('div');pw.className='img-preview-wrap';
+    const img=document.createElement('img');img.src=pendingImg;img.className='img-preview';
+    const rm=document.createElement('button');rm.className='img-remove';rm.textContent='×';rm.onclick=clearImgPreview;
+    pw.appendChild(img);pw.appendChild(rm);wrap.appendChild(pw);
+  };
+  reader.readAsDataURL(file);
+}
+function clearImgPreview(){pendingImg=null;document.getElementById('imgPreviewArea').innerHTML='';document.getElementById('imgInput').value='';}
+
+// Calculator
+let cExpr='',cVal='0',cOp='',cPrev='',cNew=true;
+function updCalc(){document.getElementById('calcVal').textContent=cVal;document.getElementById('calcExpr').textContent=cExpr;}
+function calcNum(n){if(cNew){cVal=n;cNew=false;}else cVal=cVal==='0'?n:cVal+n;updCalc();}
+function calcDot(){if(!cVal.includes('.')){cVal+='.';updCalc();}}
+function calcAC(){cExpr='';cVal='0';cOp='';cPrev='';cNew=true;updCalc();}
+function calcSign(){cVal=String(-parseFloat(cVal));updCalc();}
+function calcPct(){cVal=String(parseFloat(cVal)/100);updCalc();}
+function calcOp(op){cPrev=cVal;cOp=op;cExpr=cVal+' '+op;cNew=true;updCalc();}
+function calcEq(){
+  if(!cOp||!cPrev)return;
+  const a=parseFloat(cPrev),b=parseFloat(cVal);
+  let r=0;
+  if(cOp==='/')r=b!==0?a/b:'Error';
+  else if(cOp==='*')r=a*b;
+  else if(cOp==='-')r=a-b;
+  else if(cOp==='+')r=a+b;
+  cExpr=cPrev+' '+cOp+' '+cVal+' =';
+  cVal=String(typeof r==='number'?Math.round(r*1e10)/1e10:r);
+  cOp='';cPrev='';cNew=true;updCalc();
+}
+
+// Notes
+function saveNote(){
+  const t=document.getElementById('noteInput').value.trim();if(!t)return;
+  try{
+    let notes=JSON.parse(localStorage.getItem('aria_notes')||'[]');
+    notes.unshift({text:t,time:new Date().toLocaleString()});
+    localStorage.setItem('aria_notes',JSON.stringify(notes));
+    document.getElementById('noteInput').value='';
+    renderNotes();
+  }catch(e){}
+}
+function saveNoteFromText(text){
+  try{
+    let notes=JSON.parse(localStorage.getItem('aria_notes')||'[]');
+    const clean=text.replace(/[#*`]/g,'').trim().slice(0,500);
+    notes.unshift({text:clean,time:new Date().toLocaleString(),fromAria:true});
+    localStorage.setItem('aria_notes',JSON.stringify(notes));
+    renderNotes();
+  }catch(e){}
+}
+function renderNotes(){
+  const el=document.getElementById('notesList');if(!el)return;
+  try{
+    const notes=JSON.parse(localStorage.getItem('aria_notes')||'[]');
+    if(!notes.length){el.innerHTML='<div class="notes-empty">No notes yet. Save answers with 📝 or write your own!</div>';return;}
+    el.innerHTML=notes.map((n,i)=>`
+      <div class="note-item">
+        <div class="note-item-text">${n.fromAria?'🤖 ':'✏️ '}${n.text}</div>
+        <div class="note-item-meta"><span>${n.time}</span><button class="note-del" onclick="delNote(${i})">✕</button></div>
+      </div>`).join('');
+  }catch(e){el.innerHTML='<div class="notes-empty">Could not load notes.</div>';}
+}
+function delNote(i){
+  try{let n=JSON.parse(localStorage.getItem('aria_notes')||'[]');n.splice(i,1);localStorage.setItem('aria_notes',JSON.stringify(n));renderNotes();}catch(e){}
+}
+function clearNotes(){
+  try{localStorage.removeItem('aria_notes');renderNotes();}catch(e){}
+}
+function exportNotes(){
+  try{
+    const notes=JSON.parse(localStorage.getItem('aria_notes')||'[]');
+    if(!notes.length){alert('No notes to export!');return;}
+    const text=notes.map((n,i)=>`${i+1}. [${n.time}]\n${n.text}`).join('\n\n---\n\n');
+    const blob=new Blob([text],{type:'text/plain'});
+    const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='aria-notes.txt';a.click();
+  }catch(e){}
+}
+
+// History
+function saveHistory(user,bot){
+  try{
+    let h=JSON.parse(localStorage.getItem('aria_hist')||'[]');
+    h.unshift({user,bot,time:new Date().toLocaleString(),subj:currentSubj});
+    if(h.length>25)h=h.slice(0,25);
+    localStorage.setItem('aria_hist',JSON.stringify(h));
+  }catch(e){}
+}
+function renderHistory(){
+  const el=document.getElementById('histList');if(!el)return;
+  try{
+    const h=JSON.parse(localStorage.getItem('aria_hist')||'[]');
+    if(!h.length){el.innerHTML='<div class="hist-empty">No history yet. Start chatting!</div>';return;}
+    el.innerHTML=h.map((item,i)=>`
+      <div class="hist-item" onclick="loadHist(${i})">
+        <div class="hist-text">💬 ${item.user}</div>
+        <div class="hist-time">${item.time.split(',')[0]}</div>
+      </div>`).join('');
+  }catch(e){}
+}
+function loadHist(i){
+  try{
+    const h=JSON.parse(localStorage.getItem('aria_hist')||'[]');
+    const item=h[i];if(!item)return;
+    switchPanel('chat',document.querySelector('[onclick="switchPanel(\'chat\',this)"]'));
+    msgsEl.innerHTML='';history=[];
+    addUserMsg(item.user);
+    addBotMsg(item.bot);addTime();
+  }catch(e){}
+}
+function clearHistory(){
+  try{localStorage.removeItem('aria_hist');renderHistory();}catch(e){}
+}
+
+// Input enter key
+inputEl.addEventListener('keydown',e=>{if(e.key==='Enter')sendMsg();});
+
+// ── THEMES ──
+const THEMES = [
+  {name:'Purple',accent:'#7c6fff',accent2:'#b0a4ff',accent3:'#ff6b9d',user:'#5b4ef5'},
+  {name:'Ocean',accent:'#0ea5e9',accent2:'#7dd3fc',accent3:'#f472b6',user:'#0284c7'},
+  {name:'Forest',accent:'#10b981',accent2:'#6ee7b7',accent3:'#f59e0b',user:'#059669'},
+  {name:'Sunset',accent:'#f97316',accent2:'#fdba74',accent3:'#ec4899',user:'#ea580c'},
+  {name:'Rose',accent:'#f43f5e',accent2:'#fda4af',accent3:'#a855f7',user:'#e11d48'},
+  {name:'Cyan',accent:'#06b6d4',accent2:'#67e8f9',accent3:'#f97316',user:'#0891b2'},
+  {name:'Gold',accent:'#eab308',accent2:'#fde047',accent3:'#ef4444',user:'#ca8a04'},
+  {name:'Indigo',accent:'#6366f1',accent2:'#a5b4fc',accent3:'#ec4899',user:'#4f46e5'},
+];
+let activeTheme = JSON.parse(localStorage.getItem('aria_theme') || 'null');
+
+function applyTheme(t){
+  const r = document.documentElement.style;
+  r.setProperty('--accent', t.accent);
+  r.setProperty('--accent2', t.accent2);
+  r.setProperty('--accent3', t.accent3);
+  r.setProperty('--user', t.user);
+  r.setProperty('--accent-dim', t.accent + '22');
+  document.getElementById('themeModal').style.display = 'none';
+  localStorage.setItem('aria_theme', JSON.stringify(t));
+}
+
+function applyCustomColor(){
+  const c = document.getElementById('customColor').value;
+  const t = {name:'Custom',accent:c,accent2:c+'bb',accent3:'#ff6b9d',user:c};
+  applyTheme(t);
+}
+
+function openThemePicker(){
+  const grid = document.getElementById('themeGrid');
+  grid.innerHTML = THEMES.map((t,i) => `
+    <div onclick="applyTheme(THEMES[${i}])" style="cursor:pointer;border-radius:10px;overflow:hidden;border:2px solid transparent;transition:border 0.15s" onmouseover="this.style.borderColor='${t.accent}'" onmouseout="this.style.borderColor='transparent'">
+      <div style="height:32px;background:linear-gradient(135deg,${t.accent},${t.accent3})"></div>
+      <div style="background:var(--s2);padding:3px;text-align:center;font-size:9px;color:var(--muted)">${t.name}</div>
+    </div>`).join('');
+  document.getElementById('themeModal').style.display = 'flex';
+}
+
+function closeThemePicker(){
+  document.getElementById('themeModal').style.display = 'none';
+}
+
+// Close modal on outside click
+document.getElementById('themeModal').addEventListener('click', function(e){
+  if(e.target === this) closeThemePicker();
+});
+
+// Restore saved theme
+if(activeTheme) applyTheme(activeTheme);
+
+// ── WEATHER ──
+async function loadWeather(){
+  const bar = document.getElementById('weatherBar');
+  bar.style.display = 'block';
+  document.getElementById('wMain').textContent = 'Fetching weather...';
+  document.getElementById('wSub').textContent = '';
+  document.getElementById('wTemp').textContent = '';
+  document.getElementById('wIcon').textContent = '🌤️';
+  try {
+    // Get location
+    const pos = await new Promise((res,rej) => navigator.geolocation.getCurrentPosition(res,rej,{timeout:5000}));
+    const {latitude:lat, longitude:lon} = pos.coords;
+    const r = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,weathercode,windspeed_10m,relative_humidity_2m&timezone=auto`);
+    const d = await r.json();
+    const c = d.current;
+    const code = c.weathercode;
+    const icons = {0:'☀️',1:'🌤️',2:'⛅',3:'☁️',45:'🌫️',48:'🌫️',51:'🌦️',53:'🌦️',55:'🌧️',61:'🌧️',63:'🌧️',65:'🌧️',71:'🌨️',73:'🌨️',75:'❄️',80:'🌦️',81:'🌧️',82:'⛈️',95:'⛈️',96:'⛈️',99:'⛈️'};
+    const descs = {0:'Clear sky',1:'Mainly clear',2:'Partly cloudy',3:'Overcast',45:'Foggy',51:'Light drizzle',61:'Light rain',63:'Moderate rain',65:'Heavy rain',71:'Light snow',80:'Showers',95:'Thunderstorm'};
+    document.getElementById('wIcon').textContent = icons[code] || '🌤️';
+    document.getElementById('wMain').textContent = descs[code] || 'Weather update';
+    document.getElementById('wSub').textContent = `Humidity ${c.relative_humidity_2m}% · Wind ${c.windspeed_10m} km/h`;
+    document.getElementById('wTemp').textContent = Math.round(c.temperature_2m) + '°C';
+  } catch(e) {
+    document.getElementById('wMain').textContent = 'Could not get location. Please allow location access.';
+    document.getElementById('wIcon').textContent = '❓';
+  }
+}
+
+// ── MEMORY SYSTEM ──
+let memories = JSON.parse(localStorage.getItem('aria_memory') || '[]');
+
+function saveMemory(text, type='fact'){
+  memories.push({text, type, time: new Date().toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'})});
+  if(memories.length > 50) memories = memories.slice(-50);
+  localStorage.setItem('aria_memory', JSON.stringify(memories));
+}
+
+function renderMemory(){
+  const el = document.getElementById('memoryList');
+  if(!el) return;
+  if(!memories.length){
+    el.innerHTML='<div style="text-align:center;padding:16px;font-size:12px;color:var(--muted2)">No memories yet. Chat with Aria to build up memory!</div>';
+    return;
+  }
+  el.innerHTML = [...memories].reverse().map((m,i)=>`
+    <div class="mem-item">
+      <span class="mem-tag ${m.type}">${{fact:'📌 Fact',pref:'❤️ Pref',struggle:'⚠️ Struggle',achieve:'🏆 Win'}[m.type]||'📌 Fact'}</span>
+      <span class="mem-text">${m.text}</span>
+      <span class="mem-time">${m.time}</span>
+    </div>`).join('');
+}
+
+function clearMemory(){
+  if(!confirm('Clear all memories?')) return;
+  memories = [];
+  localStorage.removeItem('aria_memory');
+  renderMemory();
+}
+
+// Extract memories from AI responses automatically
+function extractMemories(userMsg, botReply){
+  const msg = userMsg.toLowerCase();
+  const reply = botReply.toLowerCase();
+  // Detect struggles
+  if(msg.includes("don't understand") || msg.includes("confused") || msg.includes("difficult") || msg.includes("hard")){
+    const topic = userMsg.slice(0,60);
+    saveMemory(`${userProfile.name} finds this challenging: "${topic}"`, 'struggle');
+  }
+  // Detect achievements
+  if(reply.includes("great job") || reply.includes("excellent") || reply.includes("well done") || reply.includes("correct") || reply.includes("perfect")){
+    saveMemory(`${userProfile.name} answered correctly in ${SUBJS[currentSubj]?.label||'General'}`, 'achieve');
+  }
+  // Detect preferences
+  if(msg.includes("i like") || msg.includes("i love") || msg.includes("my favourite")){
+    saveMemory(userMsg.slice(0,80), 'pref');
+  }
+  // Save topic studied
+  saveMemory(`Studied: ${currentSubj} — "${userMsg.slice(0,50)}"`, 'fact');
+}
+
+// Build memory context for AI
+function getMemoryContext(){
+  if(!memories.length) return '';
+  const recent = memories.slice(-8).map(m=>`- ${m.text}`).join('\n');
+  return `
+
+Your memory about ${userProfile.name}:
+${recent}
+Use this to give more personalised responses.`;
+}
+
+// ── SELF IMPROVEMENT LOG ──
+let improveLog = JSON.parse(localStorage.getItem('aria_improve') || '[]');
+
+function addImproveLog(entry){
+  improveLog.unshift({entry, time: new Date().toLocaleString()});
+  if(improveLog.length > 20) improveLog = improveLog.slice(0,20);
+  localStorage.setItem('aria_improve', JSON.stringify(improveLog));
+  renderImproveLog();
+}
+
+function renderImproveLog(){
+  const el = document.getElementById('improveLog');
+  if(!el) return;
+  if(!improveLog.length){
+    el.innerHTML='<div style="color:var(--muted2);text-align:center;padding:16px">No logs yet.</div>';
+    return;
+  }
+  el.innerHTML = improveLog.map(l=>`
+    <div style="padding:5px 0;border-bottom:1px solid var(--border);display:flex;gap:8px;align-items:flex-start">
+      <span style="color:var(--accent2);flex-shrink:0">▸</span>
+      <span style="flex:1">${l.entry}</span>
+      <span style="font-size:9px;color:var(--muted2);font-family:var(--mono);flex-shrink:0">${l.time.split(',')[1]||''}</span>
+    </div>`).join('');
+}
+
+// ── GOAL TRACKER ──
+let goals = JSON.parse(localStorage.getItem('aria_goals') || '[]');
+const goalIcons = {study:'📚',fitness:'💪',habit:'✅',project:'🚀'};
+
+function openGoalForm(){ document.getElementById('goalFormWrap').style.display='block'; document.getElementById('goalInput').focus(); }
+function closeGoalForm(){ document.getElementById('goalFormWrap').style.display='none'; document.getElementById('goalInput').value=''; }
+
+function saveGoal(){
+  const name = document.getElementById('goalInput').value.trim();
+  if(!name) return;
+  goals.push({
+    id: Date.now(), name,
+    cat: document.getElementById('goalCat').value,
+    deadline: document.getElementById('goalDeadline').value,
+    progress: 0, created: new Date().toLocaleDateString()
+  });
+  localStorage.setItem('aria_goals', JSON.stringify(goals));
+  closeGoalForm();
+  renderGoals();
+  addImproveLog(`New goal added: "${name}"`);
+}
+
+function updateGoalProgress(id, delta){
+  goals = goals.map(g=> g.id===id ? {...g, progress: Math.min(100, Math.max(0, g.progress+delta))} : g);
+  localStorage.setItem('aria_goals', JSON.stringify(goals));
+  renderGoals();
+  const g = goals.find(g=>g.id===id);
+  if(g && g.progress===100) addImproveLog(`🏆 Goal completed: "${g.name}"`);
+}
+
+function deleteGoal(id){
+  goals = goals.filter(g=>g.id!==id);
+  localStorage.setItem('aria_goals', JSON.stringify(goals));
+  renderGoals();
+}
+
+function renderGoals(){
+  const el = document.getElementById('goalsList');
+  if(!el) return;
+  if(!goals.length){
+    el.innerHTML='<div style="text-align:center;padding:20px;font-size:12px;color:var(--muted2)">No goals yet! Add your first goal above 🎯</div>';
+    return;
+  }
+  el.innerHTML = goals.map(g=>{
+    const daysLeft = g.deadline ? Math.ceil((new Date(g.deadline)-new Date())/(1000*60*60*24)) : null;
+    const deadlineStr = daysLeft !== null ? (daysLeft < 0 ? '⚠️ Overdue' : daysLeft===0 ? '⏰ Due today!' : `${daysLeft} days left`) : '';
+    return `<div class="goal-item" style="margin-bottom:7px">
+      <div class="goal-header">
+        <span class="goal-icon">${goalIcons[g.cat]||'🎯'}</span>
+        <span class="goal-name">${g.name}</span>
+        <button class="goal-del" onclick="deleteGoal(${g.id})">✕</button>
+      </div>
+      <div class="goal-progress"><div class="goal-bar" style="width:${g.progress}%"></div></div>
+      <div class="goal-footer">
+        <span>${g.progress}% complete ${deadlineStr ? '· '+deadlineStr : ''}</span>
+        <div class="goal-btns">
+          <button class="gprog-btn" onclick="updateGoalProgress(${g.id},-10)">−10%</button>
+          <button class="gprog-btn" onclick="updateGoalProgress(${g.id},10)">+10%</button>
+          <button class="gprog-btn" onclick="updateGoalProgress(${g.id},25)" style="border-color:var(--accent);color:var(--accent2)">+25%</button>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+// ── DECISION HELPER ──
+async function makeDecision(){
+  const q = document.getElementById('decInput').value.trim();
+  if(!q) return;
+  const resEl = document.getElementById('decResult');
+  resEl.style.display='block';
+  resEl.innerHTML='<span style="color:var(--muted)">Aria is thinking... 🤔</span>';
+  try {
+    const res = await fetch('https://openrouter.ai/api/v1/chat/completions',{
+      method:'POST',
+      headers:{'Content-Type':'application/json','Authorization':'Bearer '+OR_KEY,'HTTP-Referer':'https://aria-chatbot.netlify.app','X-Title':'Aria Pro'},
+      body: JSON.stringify({
+        model: MODEL,
+        max_tokens: 200,
+        messages:[
+          {role:'system', content:`You are a wise, friendly AI helping ${userProfile.name} make decisions. Give a short, clear recommendation with 2-3 bullet point pros/cons, then a final verdict. Be direct and helpful. Use emojis.`},
+          {role:'user', content: q}
+        ]
+      })
+    });
+    const data = await res.json();
+    const reply = data.choices?.[0]?.message?.content || 'Could not get a decision. Try again!';
+    resEl.innerHTML = reply.replace(/\n/g,'<br>');
+  } catch(e) {
+    resEl.innerHTML = '<span style="color:var(--red)">Error: '+e.message+'</span>';
+  }
+}
+
+// ── INSTALL GUIDE ──
+function openInstall(){
+  document.getElementById('installModal').style.display='flex';
+  showInstallTab('chrome');
+}
+function closeInstall(){
+  document.getElementById('installModal').style.display='none';
+}
+function showInstallTab(tab){
+  ['chrome','safari','edge'].forEach(t=>{
+    document.getElementById('install-'+t).style.display = t===tab ? 'block' : 'none';
+    const btn = document.getElementById('itab-'+t);
+    btn.classList.toggle('active-itab', t===tab);
+    if(t===tab){
+      btn.style.borderColor='var(--accent)';
+      btn.style.background='rgba(124,111,255,0.15)';
+      btn.style.color='var(--accent2)';
+    } else {
+      btn.style.borderColor='var(--border)';
+      btn.style.background='transparent';
+      btn.style.color='var(--muted)';
+    }
+  });
+}
+document.getElementById('installModal').addEventListener('click',function(e){if(e.target===this)closeInstall();});
+
+// ── PWA INSTALL ──
+let deferredPrompt = null;
+window.addEventListener('beforeinstallprompt', e => {
+  e.preventDefault();
+  deferredPrompt = e;
+  document.getElementById('installBtn').style.display = 'flex';
+});
+async function installPWA(){
+  if(!deferredPrompt){ 
+    alert('To install: tap the browser menu → "Add to Home Screen" 📱');
+    return;
+  }
+  deferredPrompt.prompt();
+  const {outcome} = await deferredPrompt.userChoice;
+  if(outcome==='accepted') document.getElementById('installBtn').style.display='none';
+  deferredPrompt = null;
+}
+window.addEventListener('appinstalled', ()=>{ document.getElementById('installBtn').style.display='none'; });
+
+// Register service worker for PWA
+if('serviceWorker' in navigator){
+  const sw = `
+    const CACHE='aria-v3';
+    const ASSETS=['/'];
+    self.addEventListener('install',e=>e.waitUntil(caches.open(CACHE).then(c=>c.addAll(ASSETS))));
+    self.addEventListener('fetch',e=>e.respondWith(caches.match(e.request).then(r=>r||fetch(e.request).catch(()=>caches.match('/')))));
+  `;
+  const blob = new Blob([sw], {type:'application/javascript'});
+  navigator.serviceWorker.register(URL.createObjectURL(blob)).catch(()=>{});
+}
+
+// Init
+renderChips();
+if('speechSynthesis' in window)window.speechSynthesis.onvoiceschanged=()=>window.speechSynthesis.getVoices();
+// Ask name if not set
+const storedProfile = JSON.parse(localStorage.getItem('aria_profile') || 'null');
+if(storedProfile && storedProfile.name) {
+  userProfile = storedProfile;
+  addBotMsg(`Hi **${userProfile.name}!** 👋 Welcome back to **Aria Pro**!\n\nToday is ${new Date().toLocaleDateString('en-IN',{weekday:'long',year:'numeric',month:'long',day:'numeric'})}.\n\nPick a subject above and ask me anything — I'm as smart as ChatGPT! 🚀`);
+} else {
+  addBotMsg("Hi! 👋 I'm **Aria Pro** — your smart AI assistant!\n\nBefore we start, **what's your name?** Just type it below so I can personalise your experience! 😊");
+  userProfile.awaitingName = true;
+}
+addTime();
+</script>
+</body>
+</html>
